@@ -137,57 +137,24 @@ console.log(countCourses(students[1]));
 	]
   **********/
 
-// function getCourses(student)
-// {
-//     let unique = [];
+function listAllCourses(students)
+{
+  let allcourses = [];
 
-//     student.forEach((student) => {
-//         student.courses.forEach((course) =>{
-//             if(unique.includes(course)){
+  students.forEach((x) => {
+    allcourses.push(...x.courses);
+  })
 
-//             }else{
-//                 unique.push(course)
-//             }
-//         })
-//     }
-//     )
+  return allcourses;
+}
 
-//     return unique;
-// }
+function filterRepeatedCourses(allcourses)
+{
+  let newArray = [...new Set(allcourses)];
+  return newArray;
+}
 
-// function listAllCourses(students) {
-  
-//     let newArray = [];
-//     let subject = students[0].courses[0];
-
-
-//     for(i = 0; i < students.length; i++)
-//     {
-//         if(students[i].courses != subject)
-//         {
-//             newArray.push(students[i].courses);
-//         }
-//     }
-//     return newArray;
-// }
-
-// function filterRepeatedSubjects(students)
-// {
-//     let newArray = listAllCourses(students);
-//     let subject = newArray[0].courses[0];
-//     for(i = 0; i < students.length; i++)
-//     {
-//         if(newArray[i].courses[i] === subject)
-//         {
-//             newArray[i].courses[i].pop();
-//             subject = newArray[i].courses[i];
-//         }
-//     }
-//     return newArray;
-// }
-
-// console.log(filterRepeatedSubjects(students));
-
+console.log(filterRepeatedCourses(listAllCourses(students)));
 
 /**********
   Question 6:
@@ -252,7 +219,15 @@ function findStudentById(studentId, students) {
   **********/
 
 function getStudentsByCourse(course, students) {
-  // Your code here
+  let newArray = [];
+
+  students.forEach((x) => {
+    if(x.courses.includes(course))
+    {
+      newArray.push(x);
+    }
+  })
+  return newArray;
 }
 
-// console.log(getStudentsByCourse("Music",students));
+console.log(getStudentsByCourse("Music",students));
